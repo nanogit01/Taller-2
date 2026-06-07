@@ -38,9 +38,11 @@ public class MovimientoJugador : MonoBehaviour
         Vector3 movimientoAvance = transform.forward * velocidadAvance * Time.fixedDeltaTime;
         float inputHorizontal = Input.GetAxisRaw("Horizontal");
         Vector3 movimientoHorizontal = transform.right * inputHorizontal * velocidadHorizontal * Time.fixedDeltaTime;
+        Vector3 nuevaPosicion = cuerpoRigido.position + movimientoAvance + movimientoHorizontal;
 
+        nuevaPosicion.x = Mathf.Clamp(nuevaPosicion.x, -14f, 14f);
 
-        cuerpoRigido.MovePosition(cuerpoRigido.position + movimientoAvance + movimientoHorizontal);
+        cuerpoRigido.MovePosition(nuevaPosicion);
     }
     private void OnCollisionEnter(Collision collision)
     {
