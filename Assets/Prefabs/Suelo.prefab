@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4368008891814473298}
   m_Layer: 0
   m_Name: Suelo
-  m_TagString: Untagged
+  m_TagString: suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 2945681932205623374}
   m_Layer: 0
   m_Name: carrilizquierdo
-  m_TagString: Untagged
+  m_TagString: suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 62589772761450916}
   m_Layer: 0
   m_Name: carrilDerecho
-  m_TagString: Untagged
+  m_TagString: suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 7575246538507696329}
   m_Layer: 0
   m_Name: carrilCentral
-  m_TagString: Untagged
+  m_TagString: suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

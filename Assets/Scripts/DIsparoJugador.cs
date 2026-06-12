@@ -9,6 +9,7 @@ public class DIsparoJugador : MonoBehaviour
     public Transform puntoDeDisparo;
     public float tiempoEntreDisparos = 0.5f;
     private float tiempoUltimoDisparo = 0f;
+    public AudioClip sonidoDisparo;
 
     void Update()
     {
@@ -21,6 +22,7 @@ public class DIsparoJugador : MonoBehaviour
     void Disparar()
     {
         Instantiate(prefabBalas, puntoDeDisparo.position, puntoDeDisparo.rotation);
+        if (sonidoDisparo != null) AudioSource.PlayClipAtPoint(sonidoDisparo, Camera.main.transform.position, 1f);
     }
 
 }

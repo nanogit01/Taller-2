@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+
+
 /* Clase que controla el movimiento del jugador recibiendo entradas del teclado. */
 public class MovimientoJugador : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class MovimientoJugador : MonoBehaviour
     public float fuerzaSalto = 7f;
     private Rigidbody cuerpoRigido;
     private bool enSuelo = true;
+    public AudioClip sonidoDerrota;
+    public GameObject panelGameOver;
 
     public TextMeshProUGUI textoMonedas;
     public TextMeshProUGUI textoPuntaje;
@@ -20,6 +24,7 @@ public class MovimientoJugador : MonoBehaviour
     void Start()
     {
         cuerpoRigido = GetComponent<Rigidbody>();
+        Time.timeScale = 1f;
     }
     void Update()
     {
@@ -47,11 +52,24 @@ public class MovimientoJugador : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         enSuelo = true;
+
+        if (Time.timeSinceLevelLoad < 1f) return;
+
         if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("Enemigo"))
         {
-            ReiniciarPartida();
+            
+            EjecutarGameOver();
         }
     }
+    void EjecutarGameOver()
+    {
+        if (sonidoDerrota != null) AudioSource.PlayClipAtPoint(sonidoDerrota, Camera.main.transform.position, 1f);
+        if (panelGameOver != null) panelGameOver.SetActive(true);
+        Time.timeScale = 0f;
+        this.enabled = false;
+    }
+
+
     void ReiniciarPartida()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -64,10 +82,15 @@ public class MovimientoJugador : MonoBehaviour
             contadorMonedas++;
             Destroy(otro.gameObject);
         }
+    }
 
 
 
 
-
+        public void ClickBotonReiniciar()
+        {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
+
